@@ -7,7 +7,7 @@ class UsersList extends Component {
 			<div className='users'>
 				<h3 className='users__title'>Online users:</h3>
 				<button onClick={() => this.props.addNewUser()}>
-					Add new user
+					Add new random user
 				</button>
 				<ul>
 					{
