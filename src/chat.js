@@ -8,18 +8,21 @@ import './assets/styles/style.scss'
 
 class Chat extends Component {
 	render() {
+		const { messages, users, addNewMessage, addNewUser, activeUser } = this.props
+
 		return (
 			<main className='main-wrapper'>
 				<Messages 
-					messages={this.props.messages}
-					addNewMessage={this.props.addNewMessage}
-					activeUser={this.props.activeUser}
+					messages={ messages }
+					addNewMessage={ addNewMessage }
+					activeUser={ activeUser }
 					registerName={this._registerActiveUser.bind(this)}
 					exitUser={this._clearActiveUser.bind(this)}
 				/>
 				<Users 
-					users={this.props.users} 
-					addNewUser={this.props.addNewUser}
+					users={ users } 
+					addNewUser={ addNewUser }
+					activeUser={ activeUser }
 				/>
 			</main>
 		)

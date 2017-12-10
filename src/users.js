@@ -6,12 +6,15 @@ class UsersList extends Component {
 		return (
 			<div className='users'>
 				<h3 className='users__title'>Online users:</h3>
-				<button onClick={this.props.addNewUser}>
+				<button onClick={() => this.props.addNewUser()}>
 					Add new user
 				</button>
 				<ul>
 					{
 						this.props.users.map((user, idx) => {
+							if (user === this.props.activeUser) {
+								return <li key={idx} style={{ color: 'blue' }}>{user} - you</li>
+							}
 							return <li key={idx}>{user}</li>
 						})
 					}
