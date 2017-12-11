@@ -25,6 +25,11 @@ body {
 	&__activeUser {
 		margin: 16px;
 	}
+
+	&__recipient {
+		margin: 16px;
+		cursor: pointer;
+	}
 }
 
 .users {
@@ -51,6 +56,8 @@ body {
 		padding: 0;
 
 		& li {
+			cursor: pointer;
+
 			&::before {
 				content: "";
 				width: 8px;

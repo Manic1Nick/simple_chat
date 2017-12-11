@@ -15,6 +15,7 @@ class Messages extends Component {
 			this.props.addNewMessage(
 				Date.now(), 
 				this.props.activeUser, 
+				this.props.sendTo,
 				this.input.value
 			)			
 		}
@@ -24,7 +25,8 @@ class Messages extends Component {
 	renderActiveUser() {
 		const { activeUser, registerName, exitUser } = this.props
 
-		const activeUserValue = activeUser 
+		const activeUserValue = 
+			activeUser 
 			? <div>You: {activeUser} <a href='#' onClick={ exitUser } >[exit]</a></div>
 			: <a href='#' onClick={ registerName } >[enter your name]</a>
 
@@ -36,11 +38,20 @@ class Messages extends Component {
 	}
 
 	render() {
+		const { messages, sendTo, sendToAll } = this.props
+
 		return (
 			<div className='chat'>
 				{
 					this.renderActiveUser()
 				}
+				<span 
+					className='chat__recipient' 
+					onClick={() => sendToAll('')} 
+				>
+					to { sendTo ? `${sendTo}` : 'all' }:
+				</span> 
+
 				<form onSubmit={this.submitForm.bind(this)} action='#'>
 					<input 
 						ref={(input) => this.input = input} 
@@ -48,15 +59,15 @@ class Messages extends Component {
 						className='chat__input'
 					/>
 					{
-						this.props.messages.map((message, idx) => {
-							const { datetime, author, text } = message
+						messages.map((message, idx) => {
+							const { datetime, author, recipient, text } = message
 							return (
 								<p className='message' key={idx}>
 									<span className='message__date'>
 										{this._formatDate(datetime)}
 									</span>
 									<span className='message__author'>
-										{author}:
+										{author} to {recipient}:
 									</span>
 									<span className='message__text'>
 										{text}

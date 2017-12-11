@@ -9,11 +9,12 @@ export const addNewUser = (username) => {
 	}		
 }
 
-export const addNewMessage = (datetime, author, text) => {
+export const addNewMessage = (datetime, author, recipient, text) => {
 	return {
 		type: 'ADD_NEW_MESSAGE',
 		datetime, 
 		author, 
+		recipient,
 		text
 	}
 }
@@ -21,6 +22,13 @@ export const addNewMessage = (datetime, author, text) => {
 export const activateUser = (username) => {
 	return {
 		type: 'ACTIVATE_USER',
+		username
+	}
+}
+
+export const selectUser = (username) => {
+	return {
+		type: 'SELECT_USER',
 		username
 	}
 }
