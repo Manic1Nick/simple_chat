@@ -8,7 +8,15 @@ import './assets/styles/style.scss'
 
 class Chat extends Component {
 	render() {
-		const { messages, users, addNewMessage, addNewUser, activeUser, selectUser, selectedUser } = this.props
+		const { 
+			messages, 
+			users, 
+			addNewMessage, 
+			addNewUser, 
+			activeUser, 
+			selectUser, 
+			selectedUser 
+		} = this.props
 
 		return (
 			<main className='main-wrapper'>

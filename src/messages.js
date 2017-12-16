@@ -58,28 +58,27 @@ class Messages extends Component {
 						type='text' 
 						className='chat__input'
 					/>
-					{
-						messages.map((message, idx) => {
-							const { datetime, author, recipient, text } = message
-							return (
-								<p className='message' key={idx}>
-									<span className='message__date'>
-										{this._formatDate(datetime)}
-									</span>
-									<span className='message__author'>
-										{author} to {recipient}:
-									</span>
-									<span className='message__text'>
-										{text}
-									</span>
-								</p>
-							)
-						})
-					}
 				</form>
-			</div>
-			
 				
+				{
+					messages.map((message, idx) => {
+						const { datetime, author, recipient, text } = message
+						return (
+							<p className='message' key={idx}>
+								<span className='message__date'>
+									{this._formatDate(datetime)}
+								</span>
+								<span className='message__author'>
+									{author} to {recipient}:
+								</span>
+								<span className='message__text'>
+									{text}
+								</span>
+							</p>
+						)
+					})
+				}				
+			</div>
 		)
 	}
 

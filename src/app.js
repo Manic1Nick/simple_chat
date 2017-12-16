@@ -4,6 +4,7 @@ import { createStore, applyMiddleware } from 'redux'
 import Chat from './chat'
 import rootReducers from './reducers'
 import { addNewUser } from './actions'
+import reduxThunk from 'redux-thunk'
 
 //-----------------------------------------
 
@@ -29,14 +30,13 @@ const checkUserMW = store => next => action => {
 			fakeRequest().then(() => {
 				store.dispatch(addNewUser())
 			})
-	}
-
+	}	
 	return next(action)
 }
 
 const store = createStore(
 	rootReducers, 
-	applyMiddleware(loggerMiddleware, checkUserMW)
+	applyMiddleware(reduxThunk, loggerMiddleware, checkUserMW)
 )
 
 window.store = store
